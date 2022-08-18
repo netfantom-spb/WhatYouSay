@@ -26,6 +26,12 @@
 			"js": [ "content.js" ],
 			"css": [ "content.css" ],
 			"run_at": "document_end"
+		},
+		{
+			"matches": [ "https://www.leumi.co.il/*" ],
+			"js": [ "leumi.co.il.js" ],
+			"css": [ "leumi.co.il.css" ],
+			"run_at": "document_end"
 		}
 	],
 	"options_ui": {
