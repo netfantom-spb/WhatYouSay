@@ -1,77 +1,62 @@
-import optionsStorage from './options-storage.js';
-
 console.log('💈 Content script loaded for', chrome.runtime.getManifest().name);
 async function init() {
-	// const options = await optionsStorage.getAll();
-	// const color = 'rgb(' + options.colorRed + ', ' + options.colorGreen + ',' + options.colorBlue + ')';
-	// const text = options.text;
-	// const notice = document.createElement('div');
-	// notice.innerHTML = text;
-	// document.body.prepend(notice);
-	// notice.id = 'text-notice';
-	// notice.style.border = '2px solid ' + color;
-	// notice.style.color = color;
-	//document.body.style.direction = 'ltr';
-
 	try {
-
-		// document.querySelector('#enter_your_account > div.includeLink > a').innerText = 'Войти';
-		// document.querySelector('#enter_create_account > div.includeLink > a').innerText = 'Открыть счет';
 		updateInnerText([
 			'#enter_your_account > div.includeLink > a',
-			'#enter_create_account > div.includeLink > a'
+			'#enter_create_account > div.includeLink > a',
 		], [
 			'Войти',
-			'Открыть счет'
+			'Открыть счет',
 		]);
 
 		{
-			let int = setInterval(() => {
-				let menu = document.querySelector('ul.inner_menu.iconMenu');
+			const int = setInterval(() => {
+				const menu = document.querySelector('ul.inner_menu.iconMenu');
 				if (menu) {
 					clearInterval(int);
-					menu.querySelector('#header_talk_dropdown > button').innerText = 'Связаться';
+					menu.querySelector('#header_talk_dropdown > button').textContent = 'Связаться';
 					menu.querySelector('#header_talk_dropdown > button').setAttribute('style', 'font-size: 16px!important');
-					menu.querySelector('#myUser1StAccess').innerText = 'Доступность';
-					menu.querySelector('ul.inner_menu.iconMenu > li:nth-child(2) > a').innerText = 'Филиалы';
+					menu.querySelector('#myUser1StAccess').textContent = 'Доступность';
+					menu.querySelector('ul.inner_menu.iconMenu > li:nth-child(2) > a').textContent = 'Филиалы';
 				}
 			}, 1000);
-
 		}
 
 		{
-			let int = setInterval(() => {
-				let container = document.querySelector('.contactUsContainer ');
-				if (container) {
-					clearInterval(int);
-					let menu = container.querySelector('.contactUsContainer ul');
-					let labels = ['Переписка с банкиром', 'Звонок из приложения', 'Обратный звонок', null, 'Записаться на прием'];
-					let menuItems = menu.querySelectorAll('li > a div.relatedLinkPic');
-					menuItems.forEach((item, index) => {
-						if (labels[index]) {
-							item.innerText = labels[index];
+			const int = setInterval(
+				() => {
+					const container = document.querySelector('.contactUsContainer ');
+					if (container) {
+						clearInterval(int);
+						const menu = container.querySelector('.contactUsContainer ul');
+						const labels = ['Переписка с банкиром', 'Звонок из приложения', 'Обратный звонок', null, 'Записаться на прием'];
+						const menuItems = menu.querySelectorAll('li > a div.relatedLinkPic');
+
+						for (const [index, item] of menuItems.entries()) {
+							if (labels[index]) {
+								item.textContent = labels[index];
+							}
 						}
-					});
-					container.querySelector('.ContactLinksTitle').innerText = 'Связаться';
-					//container.querySelector('.ContactLinksTitle').style.fontSize = '10px';
-				}
-			}, 1000);
+
+						container.querySelector('.ContactLinksTitle').textContent = 'Связаться';
+					}
+				},
+				1000,
+			);
 		}
-
-
+	} catch (error) {
+		console.error(error);
 	}
-	catch (err) {
-		console.error(err);
-	};
 }
 
-function updateInnerText(elementsPath, titles) {
-	elementsPath.forEach((path, index) => {
-		let elem = document.querySelector(path);
-		if (elem && elem.innerText) {
-			elem.innerText = titles[index];
+function updateInnerText(selectors, titles) {
+	console.log(selectors);
+	for (const [index, selector] of selectors.entries()) {
+		const element = document.querySelector(selector);
+		if (element) {
+			element.textContent = titles[index];
 		}
-	});
+	}
 }
 
 init();
