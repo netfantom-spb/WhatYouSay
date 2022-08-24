@@ -17,7 +17,15 @@
 		"envs": [
 			"browser",
 			"webextensions"
-		]
+		],
+		"rules": {
+			"no-trailing-spaces": [
+				"error",
+				{
+					"ignoreComments": true
+				}
+			]
+		}
 	},
 	"stylelint": {
 		"extends": "stylelint-config-xo"
@@ -42,8 +50,8 @@
 			]
 		}
 	},
- 	"@parcel/bundler-default-bug": "https://github.com/parcel-bundler/parcel/issues/8071",
- 	"@parcel/bundler-default": {
- 		"minBundles": 10000000
- 	}
+	"@parcel/bundler-default-bug": "https://github.com/parcel-bundler/parcel/issues/8071",
+	"@parcel/bundler-default": {
+		"minBundles": 10000000
+	}
 }
