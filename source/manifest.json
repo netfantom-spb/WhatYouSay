@@ -1,6 +1,6 @@
 {
 	"name": "What You Say?",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Forced translation of Israeli sites into Russian for the new repatriates",
 	"homepage_url": "https://github.com/netfantom-spb/WhatYouSay",
 	"manifest_version": 3,
@@ -19,24 +19,10 @@
 	],
 	"content_scripts": [
 		{
-			"matches": [ "https://github.com/fregante/browser-extension-template/*" ],
-			"js": [ "content.js" ],
-			"css": [ "content.css" ],
-			"run_at": "document_end"
-		},
-		{
 			"matches": [ "https://www.leumi.co.il/*" ],
 			"js": [ "leumi.co.il.js" ],
 			"css": [ "leumi.co.il.css" ],
 			"run_at": "document_end"
 		}
-	],
-	"options_ui": {
-		"browser_style": true,
-		"page": "options.html"
-	},
-	"background": {
-		"service_worker": "background.js",
-		"type": "module"
-	}
+	]
 }
