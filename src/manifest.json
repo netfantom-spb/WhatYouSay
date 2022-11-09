@@ -1,0 +1,49 @@
+{
+	"name": "What You Say?",
+	"version": "0.0.2",
+	"description": "Forced translation of Israeli sites into Russian for the new repatriates",
+	"homepage_url": "https://github.com/netfantom-spb/WhatYouSay",
+	"manifest_version": 3,
+	"minimum_chrome_version": "100",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "awesome-extension@notlmn.github.io",
+			"strict_min_version": "100.0"
+		}
+	},
+	"icons": {
+		"128": "icon.png"
+	},
+	"permissions": [
+		"storage"
+	],
+	"content_scripts": [
+		{
+			"matches": [ "https://www.leumi.co.il/*" ],
+			"js": [ "./sites/leumi.co.il/index.js" ],
+			"css": [ "./sites/leumi.co.il/index.css" ],
+			"run_at": "document_end"
+		},
+		{
+			"matches": [ "https://*.maccabi4u.co.il/*" ],
+			"js": [ "./sites/maccabi4u.co.il/fix-lang.js" ],
+			"run_at": "document_start"
+		},
+		{
+			"matches": [ "https://www.maccabi4u.co.il/*" ],
+			"js": [ "./sites/maccabi4u.co.il/index.js" ],
+			"run_at": "document_end"
+		},
+		{
+			"matches": [ "https://mac.maccabi4u.co.il/*" ],
+			"js": [ "./sites/maccabi4u.co.il/mac.maccabi4u.co.il.js" ],
+			"run_at": "document_end"
+		},
+		{
+			"matches": [ "https://max.co.il/*" ],
+			"js": [ "./sites/maccabi4u.co.il/fix-lang.js" ],
+			"run_at": "document_start"
+		}
+		
+	]
+}

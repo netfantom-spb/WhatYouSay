@@ -6,9 +6,11 @@
  */
 export function updateInnerText(selectors, titles, container = undefined) {
 	for (const [index, selector] of selectors.entries()) {
-		const element = (container ?? document).querySelector(selector);
-		if (element) {
-			element.textContent = titles[index];
+		const elements = (container ?? document).querySelectorAll(selector);
+		if (elements && elements.length) {
+			elements.forEach((element) => {
+				element.textContent = titles[index];
+			});
 		} else {
 			console.warn(`Update text error: container '${selector}' not found`);
 		}
@@ -25,7 +27,7 @@ export function updateInnerText(selectors, titles, container = undefined) {
 export async function waitForContainer(selector, delay = 1000, retryCount = 3) {
 	return new Promise((resolve, reject) => {
 		let counter = 1;
-        // Try to find container immideately
+		// Try to find container immideately
 		const container = document.querySelector(selector);
 		if (container) {
 			resolve(container);
@@ -36,8 +38,8 @@ export async function waitForContainer(selector, delay = 1000, retryCount = 3) {
 					clearInterval(interval);
 					reject(
 						new Error(
-							`Container '${selector}' not found after ${counter} retries`,
-						),
+							`Container '${selector}' not found after ${counter} retries`
+						)
 					);
 				}
 

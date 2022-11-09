@@ -1,4 +1,4 @@
-import {updateInnerText} from '../common.js';
+import {updateInnerText} from '../../common.js';
 
 const homepage = {
 	async init() {

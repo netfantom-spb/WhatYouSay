@@ -1,4 +1,4 @@
-import {waitForContainer, updateInnerText} from '../common.js';
+import {waitForContainer, updateInnerText} from '../../common.js';
 import homepage from './homepage.js';
 
 console.log('💈 Content script loaded for', chrome.runtime.getManifest().name);
