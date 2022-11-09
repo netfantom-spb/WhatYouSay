@@ -20,9 +20,14 @@
 	"content_scripts": [
 		{
 			"matches": [ "https://www.leumi.co.il/*" ],
-			"js": [ "leumi.co.il.js" ],
-			"css": [ "leumi.co.il.css" ],
+			"js": [ "leumi.co.il/index.js" ],
+			"css": [ "leumi.co.il/index.css" ],
 			"run_at": "document_end"
+		},
+		{
+			"matches": [ "https://online.maccabi4u.co.il/*" ],
+			"js": [ "maccabi4u.co.il/index.js" ],
+			"run_at": "document_start"
 		}
 	]
 }
