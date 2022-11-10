@@ -15,6 +15,7 @@ import terser from '@rollup/plugin-terser';
 import zip from 'rollup-plugin-zip';
 import scss from 'rollup-plugin-scss';
 import alias from '@rollup/plugin-alias';
+import typescript from '@rollup/plugin-typescript';
 
 const isProduction = process.env.NODE_ENV === 'production'; //!process.env.ROLLUP_WATCH;
 //const manifestFile = isProduction ? 'src/manifest.production.json' : 'src/manifest.development.json';
@@ -27,21 +28,18 @@ export default {
     input: manifestFile,
     output: {
         dir: 'build',
-        format: 'esm',
+        format: 'es',
         chunkFileNames: path.join('chunks', '[name]-[hash].js'),
         sourcemap: !isProduction
     },
-    plugins: [
-        // always put chromeExtension() before other plugins
-        chromeExtension(),
-        simpleReloader(),
-
+    plugins: [        
         replace({
             preventAssignment: true,
             'process.env.NODE_ENV': JSON.stringify('production'),
             __buildDate__: () => JSON.stringify(new Date()),
         }),
-
+        // always put chromeExtension() before other plugins
+        chromeExtension(),        
         alias({
             entries: [
                 { find: 'react', replacement: 'preact/compat' },
@@ -51,18 +49,20 @@ export default {
             ]
         }),
 
-        babel({
-            // Do not transpile dependencies
-            ignore: ['node_modules'],
-            babelHelpers: 'bundled',
-        }),
+        typescript(),
+
+        // babel({
+        //     // Do not transpile dependencies
+        //     ignore: ['node_modules'],
+        //     babelHelpers: 'bundled',
+        // }),
 
         isProduction && strip(),
 
         // the plugins below are optional
 
-        resolve(),
-        commonjs(),
+        //resolve(),
+        //commonjs(),
 
         scss({
             processor: () => postcss(),
@@ -71,18 +71,16 @@ export default {
                 'node_modules/'
             ]
         }),
-
-
-
+        
         postcss({ minimize: isProduction }),
-
         isProduction && terser(),
 
-        copy({
-            targets: [
-                { src: 'src/lib/fontawesome/webfonts', dest: 'build/' },
-            ]
-        }),
-        isProduction && zip({ dir: 'releases' }),
+        // copy({
+        //     targets: [
+        //         { src: 'src/lib/fontawesome/webfonts', dest: 'build/' },
+        //     ]
+        // }),
+        simpleReloader(),
+        isProduction && zip({ dir: 'releases' }),        
     ],
 };

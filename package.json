@@ -1,7 +1,7 @@
 {
 	"name": "what-you-say",
-	"version": "1.0.0",
-	"description": "Native translation",
+	"version": "0.2.0",
+	"description": "Forced translation of Israeli sites into Russian for the new repatriates",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -13,9 +13,6 @@
 	"browserslist": [
 		"last 3 Chrome version"
 	],
-	"dependencies": {
-
-	},
 	"author": "Viktor Egorov",
 	"license": "ISC",
 	"devDependencies": {
@@ -30,6 +27,8 @@
 		"@rollup/plugin-replace": "^5.0.1",
 		"@rollup/plugin-strip": "^3.0.1",
 		"@rollup/plugin-terser": "^0.1.0",
+		"@rollup/plugin-typescript": "^9.0.2",
+		"@types/chrome": "^0.0.200",
 		"babel-plugin-lodash": "^3.3.4",
 		"bootstrap": "^5.2.2",
 		"classnames": "^2.3.2",
@@ -47,6 +46,7 @@
 		"rollup-plugin-import-css": "^3.1.0",
 		"rollup-plugin-postcss": "^4.0.2",
 		"rollup-plugin-scss": "^3.0.0",
-		"rollup-plugin-zip": "^1.0.3"
+		"rollup-plugin-zip": "^1.0.3",
+		"typescript": "^4.8.4"
 	}
 }

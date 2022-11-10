@@ -1,9 +1,7 @@
 {
-	"name": "What You Say?",
-	"version": "0.0.2",
-	"description": "Forced translation of Israeli sites into Russian for the new repatriates",
-	"homepage_url": "https://github.com/netfantom-spb/WhatYouSay",
 	"manifest_version": 3,
+	"name": "What You Say?",
+	"homepage_url": "https://github.com/netfantom-spb/WhatYouSay",	
 	"minimum_chrome_version": "100",
 	"browser_specific_settings": {
 		"gecko": {
