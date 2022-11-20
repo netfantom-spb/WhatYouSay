@@ -61,8 +61,8 @@ export default {
 
         // the plugins below are optional
 
-        //resolve(),
-        //commonjs(),
+        resolve(),
+        commonjs(),
 
         scss({
             processor: () => postcss(),

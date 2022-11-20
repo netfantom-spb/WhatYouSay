@@ -28,8 +28,13 @@
 			"run_at": "document_start"
 		},
 		{
-			"matches": [ "https://*.maccabi4u.co.il/*" ],
-			"js": [ "./sites/maccabi4u.co.il/index.ts" ],
+			"matches": [ "https://www.maccabi4u.co.il/*" ],
+			"js": [ "./sites/maccabi4u.co.il/index.js" ],
+			"run_at": "document_end"
+		},
+		{
+			"matches": [ "https://mac.maccabi4u.co.il/*" ],
+			"js": [ "./sites/maccabi4u.co.il/mac.maccabi4u.co.il.js" ],
 			"run_at": "document_end"
 		},
 		{

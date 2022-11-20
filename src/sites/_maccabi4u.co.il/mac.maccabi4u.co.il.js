@@ -14,12 +14,6 @@ updateInnerText(['#IdentifyWithPassword button.validatePassword'], ['Войти'
 updateInnerText(['.joinOnline'], ['У меня нет пароля'])
 updateInnerText(['.forgetPassword'], ['У меня нет пароля'])
 
-const en = {
-    $: '#IdentifyWithOTP',
-    _: [
-        selector = '.myID label',
-        innerText = 'Вход в личный кабинет'
-    ]
-}
+
 
 

@@ -1,16 +1,21 @@
 {
 	"compilerOptions": {
-	  "allowSyntheticDefaultImports": true,
-	  "esModuleInterop": true,
-	  "jsx": "react",
-	  "lib": ["dom", "es2019"],
-	  "module": "ESNext",
-	  "moduleResolution": "node",
-	  "noImplicitReturns": true,
-	  "noUnusedLocals": true,
-	  "strict": true,
-	  "target": "es2018",
-	  "allowJs": true
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
+		"lib": [
+			"dom",
+			"es6",
+			"dom.iterable"
+		],
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"strict": true,
+		"target": "es6",
+		"allowJs": true
 	},
 	"include": [
 		"./src/**/*"
@@ -18,4 +23,4 @@
 	"exclude": [
 		"./node_modules"
 	]
-  }
+}
