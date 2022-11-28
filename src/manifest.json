@@ -18,7 +18,7 @@
 	"content_scripts": [
 		{
 			"matches": [ "https://www.leumi.co.il/*" ],
-			"js": [ "./sites/leumi.co.il/index.js" ],
+			"js": [ "./sites/leumi.co.il/index.ts" ],
 			"css": [ "./sites/leumi.co.il/index.css" ],
 			"run_at": "document_end"
 		},
