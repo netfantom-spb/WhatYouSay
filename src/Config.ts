@@ -9,13 +9,9 @@ export interface IPage {
 
 export interface IRule {
     $: string | ISelector,
-    _: string | IAction,
+    _?: string | IAction,
     rules?: IRule[],
-    wait?: boolean |
-    {
-        timeout: number,
-        retry: number
-    }
+    wait?: boolean | IWait
 }
 
 export interface ISelector {
@@ -24,14 +20,15 @@ export interface ISelector {
 }
 
 export interface IAction {
-    type: 'innerText' | 'value',
+    type: 'textContent' | 'value',
     text: string |
-    [
-        {
-            lang: string,
-            value: TLang
-        }
-    ]
+    {
+        en?: string,
+        ru?: string
+    }
 }
 
-type TLang = 'en' | 'hr'; 
+export interface IWait {
+    timeout: number,
+    retry: number
+} 
